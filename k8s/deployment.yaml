@@ -1,0 +1,21 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eyescroll
+  template:
+    metadata:
+      labels:
+        app: eyescroll
+    spec:
+      containers:
+      - name: eyescroll
+        image: eyescroll:latest
+        imagePullPolicy: Never  # Uses local image
+        ports:
+        - containerPort: 3000
